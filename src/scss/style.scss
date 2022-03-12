@@ -58,9 +58,13 @@ body {
 
 .container {
 	margin: 0 auto;
-	width: 90%;
+	width: 1440px;
 	@media (max-width: 1500px) {
-		// width: 1080px;
+		width: 1080px;
+		font-size: 14px;
+	}
+	@media (max-width: 1080px) {
+		width: 90%;
 		font-size: 14px;
 	}
 }
