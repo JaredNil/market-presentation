@@ -1,0 +1,485 @@
+// @use "sass:math";
+//<МИКСИНЫ>===============================================================================================
+@import "variative/mixins";
+//<ШРИФТЫ>===============================================================================================
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontFamily: "";
+$fontSize: 16;
+
+//<ПЕРЕМЕННЫЕ>==========================================================================================================
+$minWidth: 320px;
+$maxWidth: 1920;
+$maxWidthContainer: 1170;
+$md1: $maxWidthContainer + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+
+$mainColor: #000;
+
+//</ПЕРЕМЕННЫЕ>===========================================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+
+body {
+	color: $mainColor;
+	&._lock {
+		overflow: hidden;
+	}
+}
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+
+//<ОБОЛОЧКА>===========================================================================================================
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	background: linear-gradient(174deg, #8e7de0, #d3ffe8);
+	// background-color: #000;
+	margin-top: -156px;
+}
+//</ОБОЛОЧКА>===========================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+//@import "variative/datepicker";
+//@import "variative/lightgallery";
+//@import "variative/pagging";
+// @import "variative/home";
+// @import "variative/popup";
+@import "header";
+@import "footer";
+
+@import "fonts";
+@import "null";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+
+.container {
+	margin: 0 auto;
+	width: 90%;
+	@media (max-width: 1500px) {
+		// width: 1080px;
+		font-size: 14px;
+	}
+}
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+
+.dropdown {
+	position: relative;
+	display: inline-flex;
+	flex-direction: column;
+	font-family: "Mukta", sans-serif;
+	font-size: 16px;
+	color: #fff;
+	a {
+		color: #fff;
+	}
+	@media (max-width: 1500px) {
+		font-size: 14px;
+	}
+	.icon {
+		display: inline;
+		cursor: pointer;
+		position: relative;
+		.arrow {
+			position: relative;
+			top: 2px;
+			width: 12px;
+			display: inline-block;
+			transform: rotate(0deg);
+			transition: all 0.1s ease-in-out 0s;
+		}
+	}
+	.menu {
+		padding: 12px 27px 12px 7px;
+		border-radius: 10px;
+		position: absolute;
+		top: 18px;
+		transition: opacity 0.15s ease 0s;
+		transform: translate(0%, 0%);
+		opacity: 1;
+		background-color: rgb(255, 255, 255);
+		li {
+			z-index: 2;
+			width: 160px;
+			margin: 8px 0;
+			.dropdown__link {
+				cursor: pointer;
+				color: #000;
+				line-height: 10px;
+			}
+		}
+		&.header__city-menu {
+			top: 28px;
+			z-index: 10;
+			padding: 0 0 0 0;
+			margin: 0 0;
+			li {
+				width: 90px;
+				margin: 0 0;
+				.dropdown__link {
+					padding: 0 8px 0 4px;
+					font-size: 14px;
+					height: 10px;
+				}
+			}
+		}
+	}
+
+	&.closed {
+		.icon {
+			.arrow {
+				transform: rotate(-180deg);
+			}
+		}
+		.menu {
+			opacity: 0;
+			transform: translate(-100%, -1000vh);
+			li {
+				.dropdown__link {
+				}
+			}
+		}
+	}
+}
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+.page {
+	flex: 1 1 auto;
+}
+//===================================================================================================================================
+
+//</ОСНОВНОЙ БЛОК>====================================================================================================
+.wrapper__banner {
+	overflow: hidden;
+	z-index: 10;
+	min-height: 800px;
+	height: 740px;
+	// default background of slides
+	// background: linear-gradient(174deg, #8e7de0, #d3ffe8);
+}
+
+.banner__pagination {
+	margin: 0 auto 40px auto;
+	display: flex;
+	justify-content: center;
+}
+.pag {
+	position: relative;
+	width: 180px;
+	margin: 0 15px;
+	font-size: 22px;
+	cursor: pointer;
+	z-index: 500;
+	&.swiper-pagination-bullet {
+		margin: 0 15px;
+		background: none;
+		height: none;
+		opacity: 0.65;
+	}
+	&.swiper-pagination-bullet-active {
+		margin: 0 15px;
+		background: none;
+		opacity: 1;
+		&:after {
+			content: "";
+			position: absolute;
+			height: 2px;
+			left: 0;
+			background-color: #fff;
+			animation: progressBar 5s linear 1, infinityBar 15s linear 5s infinite;
+			@keyframes progressBar {
+				0% {
+					width: 0%;
+				}
+				100% {
+					width: 100%;
+				}
+			}
+			@keyframes infinityBar {
+				0% {
+					width: 100%;
+				}
+				100% {
+					width: 100%;
+				}
+			}
+		}
+	}
+	.pag__name {
+		font-family: "Mukta", sans-serif;
+		color: #fff;
+		text-align: center;
+	}
+	.pag__progress {
+		position: absolute;
+
+		content: "";
+		height: 2px;
+		background-color: rgba(255, 255, 255, 0.45);
+		width: 100%;
+	}
+}
+
+//===================================================================================================================================
+//===================================================================================================================================
+//===================================================================================================================================
+
+.iphoneXR-banner {
+	background: linear-gradient(174deg, #f4492f, #f367a5, #bc9de0);
+}
+.cyberpunk-banner {
+	background: linear-gradient(290deg, #f7c316, #ff916c, #f882b0);
+}
+.samsung-banner {
+	background: linear-gradient(174deg, #0490b0, #c6818d);
+}
+.eldenring-banner {
+	background: linear-gradient(174deg, #bc97ee, #5093e1, #1ed567);
+}
+
+//===================================================================================================================================
+.swiper-slide {
+	position: relative;
+	font-family: "Mukta", sans-serif;
+	color: #fff;
+	a {
+		color: #fff;
+	}
+	.slide__container {
+		margin: 0 auto;
+		position: relative;
+		top: 120px;
+		height: calc(100% - 120px);
+		z-index: 20;
+	}
+}
+
+.iphoneXR-image {
+	position: absolute;
+	right: 6px;
+	width: 700px;
+	transform: rotate(-10deg);
+	user-select: none;
+}
+.iphoneXR-text {
+	position: absolute;
+	top: 80px;
+	left: 0;
+	font-size: 68px;
+	line-height: 75px;
+	letter-spacing: 0.7px;
+
+	.iphoneXR-title {
+		margin: 20px 0;
+		font-weight: 200;
+		span {
+			font-size: 80px;
+			letter-spacing: 1.8px;
+		}
+	}
+	.iphoneXR-price {
+		margin: 35px 0;
+		font-weight: 800;
+		font-size: 78px;
+		letter-spacing: -0.8px;
+	}
+	.iphoneXR-buy {
+		position: relative;
+		background-color: #000;
+		padding: 0px 80px;
+		font-size: 38px;
+	}
+}
+
+//===================================================================================================================================
+//===================================================================================================================================
+//===================================================================================================================================
+//===================================================================================================================================
+
+.brands {
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+.brands-swiper {
+	position: relative;
+	padding: 10px 40px;
+	overflow: hidden;
+}
+.swiper-button-next {
+	position: absolute;
+	top: 71%;
+	transform: translateY(-50%);
+	right: 0px;
+	&::before {
+		content: "";
+		position: absolute;
+		left: -6.5px;
+		width: 35px;
+		height: 95px;
+		background-color: #fff;
+		z-index: 0;
+	}
+	&::after {
+		z-index: 1;
+		color: #000;
+	}
+}
+.swiper-button-prev {
+	position: absolute;
+	left: 0;
+	top: 71%;
+	transform: translateY(-50%);
+	&::before {
+		content: "";
+		position: absolute;
+		right: -6.5px;
+		width: 35px;
+		height: 95px;
+		background-color: #fff;
+		z-index: 0;
+	}
+	&::after {
+		z-index: 1;
+		color: #000;
+	}
+}
+.brand-item {
+	padding: 0 40px;
+	height: 80px;
+	border-radius: 8px;
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.616);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	a {
+		img {
+			user-select: none;
+		}
+	}
+}
+
+//===================================================================================================================================
+//===================================================================================================================================
+//===================================================================================================================================
+.content {
+	margin: 40px 0 10px 0;
+	font-family: "Mukta", sans-serif;
+}
+
+.content__information {
+	position: relative;
+	padding: 15px 0;
+	font-size: 55px;
+	font-weight: 600;
+	display: flex;
+	.item-counter {
+		display: block;
+		position: relative;
+		color: #d68b00;
+		font-size: 24px;
+		top: 5px;
+		cursor: pointer;
+	}
+}
+.item__container {
+	display: flex;
+	justify-content: space-around;
+}
+
+//===================================================================================================================================
+//===================================================================================================================================
+//===================================================================================================================================
+//===================================================================================================================================
+
+.item {
+	width: 22%;
+	max-width: 360px;
+	overflow: hidden;
+	font-family: "Mukta", sans-serif;
+}
+
+.item__preview {
+	width: 100%;
+	object-fit: contain;
+	max-height: 320px;
+	overflow: hidden;
+	max-width: 320px;
+	img {
+		margin: 0 auto;
+		object-fit: cover;
+		position: relative;
+		display: block;
+		width: 85%;
+		user-select: none;
+	}
+}
+.item__title {
+	padding: 10px 0 10px 0;
+	font-size: 28px;
+	font-weight: 600;
+}
+.item__rating {
+	position: relative;
+	display: flex;
+	align-items: center;
+	img {
+		width: 14px;
+		margin: 0 2px;
+		cursor: pointer;
+	}
+	.item__rating-comment {
+		margin: 0 15px;
+		cursor: pointer;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		img {
+			position: relative;
+			top: -1px;
+			width: 12px;
+		}
+		.comment-counter {
+			font-size: 12px;
+			line-height: 9px;
+		}
+	}
+}
+.item__busketinfo {
+	margin: 30px 0px 30px 0px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	.item__price {
+		font-size: 34px;
+		font-weight: 900;
+		letter-spacing: 1.2px;
+	}
+	.item__cart {
+		position: relative;
+		left: 25px;
+		height: 30px;
+		width: 30px;
+		cursor: pointer;
+		.item__cart-container {
+			content: "";
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			background-color: #d68b00;
+			img {
+				position: relative;
+				left: 5px;
+				top: 5px;
+				width: 20px;
+				height: 20px;
+			}
+		}
+	}
+}
